@@ -26,6 +26,8 @@ class SearchInput extends AbstractUIComponent {
         super(UIView);
 
         // Codez ici les propriétés définies dans le diagramme de classes.
+        this.boundSearchInputHandler();
+        this.boundClearSearchHandler();
         this.init();
     }
 
