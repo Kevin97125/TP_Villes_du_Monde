@@ -77,6 +77,7 @@ class Indexer extends AbstractUIComponent {
 
         // Codez ici les propriétés définies dans le diagramme de classes.
         this.init();
+        disable
     }
 
     set mode(value) {
