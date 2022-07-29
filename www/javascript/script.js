@@ -34,7 +34,9 @@ class SearchInput extends AbstractUIComponent {
     get value() {
         return super.value;
     }
+    set value(){
 
+    }
     searchInputHandler() {
         // Codez cette méthode. Adaptation en classe du TP Citation.
     }
@@ -80,6 +82,8 @@ class Indexer extends AbstractUIComponent {
         // Codez ici les propriétés définies dans le diagramme de classes.
         this.total = total;
         this.mode = mode = indexerMode.NONE;
+        this.nextBtn();
+        this.previousBtn();
         this.init();
     }
 
