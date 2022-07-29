@@ -76,8 +76,9 @@ class Indexer extends AbstractUIComponent {
         super(UIView);
 
         // Codez ici les propriétés définies dans le diagramme de classes.
+        this.total = total;
+        this.mode = mode = indexerMode.NONE;
         this.init();
-        disable
     }
 
     set mode(value) {
