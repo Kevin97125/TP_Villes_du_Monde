@@ -60,6 +60,7 @@ class SearchInput extends AbstractUIComponent {
         this.boundSearchInputHandler();
         this.boundClearSearchHandler();
         this.init();
+        
     }
 
     get value() {
