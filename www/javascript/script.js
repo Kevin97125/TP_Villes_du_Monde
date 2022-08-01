@@ -6,6 +6,37 @@ class WorldCities extends AbstractApp {
 
     init(dataSource) {
         // Codez cette méthode pour traiter le fichier chargé et initialiser la classe.
+        this.initLines(dataSource);
+        this.initCards(dataSource);
+        console.log("ALEX - this.cards :", this.cards);
+
+        Letters.forEach(letter => {
+            let couples = [];
+
+            for (const card of this.cards) {
+                if (card.letter == letter) {
+                    card.rotate();
+                    couples.push(card);
+                }
+            }
+
+            if (couples.length > 0) {
+                if (!debug) {
+                    this.allCouples.push(couples);
+                } else {
+                    if (this.allCouples.length < 2) {
+                        for (const card of couples) {
+                            card.buttonDiv.style.border = "solid";
+                        }
+                        this.allCouples.push(couples);
+                    }
+                }
+            }
+        });
+        console.log("ALEX - this.allCouples :", this.allCouples);
+
+        this.flipCards();
+
         super.init(dataSource);
     }
 }
@@ -34,9 +65,9 @@ class SearchInput extends AbstractUIComponent {
     get value() {
         return super.value;
     }
-    set value(){
+    // set value() {
 
-    }
+    // }
     searchInputHandler() {
         // Codez cette méthode. Adaptation en classe du TP Citation.
     }
@@ -142,6 +173,22 @@ class Indexer extends AbstractUIComponent {
 
     initButtons() {
         // Codez cette méthode. Adaptation en classe du TP Citation.
+        this.cards.splice(0);
+        dataSource.querySelectorAll(".carte").forEach(cardDiv => {
+            const card = new Card(cardDiv);
+            card.addEventListener(CardEventNames.CARD_CLICK, function () {
+                this.cardClickHandler(card);
+            }.bind(this));
+            card.disable(false);
+            card.letter = card.letter;
+
+            if (debug) {
+                card.back.textContent = card.letter;
+                // console.log("tetet", card.back.textContent);
+            }
+
+            this.cards.push(card);
+        });
     }
 
 }
@@ -153,6 +200,7 @@ class IndexerButton extends AbstractButton {
 
     disable(bool = true) {
         // Codez cette méthode pour changer la couleur des boutons via la classe CSS. Adaptation en classe du TP Citation.
+        const header = document.querySelector("header"); 
         super.disable(bool);
     }
 }
@@ -181,8 +229,7 @@ class City {
 async function loadDatas() {
     const response = await fetch("data/datas.json")
         .then(response => response.json())
-        .then(json => worldCities.init(json)
-        );
+        .then(json => worldCities.init(json));
 }
 
 function appInitHandler(evt) {
