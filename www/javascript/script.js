@@ -2,42 +2,62 @@ class WorldCities extends AbstractApp {
     constructor(containerDiv) {
         super(containerDiv);
 
+        this.baseTowns = [];
+        this.towns = [];
+        this.indexer;
+        this.searchIpt;
+    }
+
+    set Index(value){
+
     }
 
     init(dataSource) {
         // Codez cette méthode pour traiter le fichier chargé et initialiser la classe.
-        this.initLines(dataSource);
-        this.initCards(dataSource);
-        console.log("ALEX - this.cards :", this.cards);
-
-        Letters.forEach(letter => {
-            let couples = [];
-
-            for (const card of this.cards) {
-                if (card.letter == letter) {
-                    card.rotate();
-                    couples.push(card);
-                }
-            }
-
-            if (couples.length > 0) {
-                if (!debug) {
-                    this.allCouples.push(couples);
-                } else {
-                    if (this.allCouples.length < 2) {
-                        for (const card of couples) {
-                            card.buttonDiv.style.border = "solid";
-                        }
-                        this.allCouples.push(couples);
-                    }
-                }
-            }
-        });
-        console.log("ALEX - this.allCouples :", this.allCouples);
-
-        this.flipCards();
-
+        this.initTowns(dataSource);
         super.init(dataSource);
+    }
+
+    initTowns(dataSource) {
+        for (const town of dataSource.towns) {
+            console.log();
+        }
+    }
+
+    loadTown(index){
+
+    }
+
+    loadGallery(images) {
+
+    }
+
+    searchInputHandler(){
+
+    }
+
+    clearSearchInputHandler() {
+
+    }
+
+    refresh() {
+
+    }
+
+    filterElement(arr, filter){
+
+    }
+
+    initInput(){
+
+    }
+
+    indexerIndexChangeHandler() {
+
+    }
+
+    initIndexer() {
+
     }
 }
 
@@ -66,9 +86,9 @@ class SearchInput extends AbstractUIComponent {
     get value() {
         return super.value;
     }
-    // set value() {
+    set value(value) {
 
-    // }
+    }
     searchInputHandler() {
         // Codez cette méthode. Adaptation en classe du TP Citation.
     }
