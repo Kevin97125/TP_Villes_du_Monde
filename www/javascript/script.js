@@ -168,11 +168,13 @@ class SearchInput extends AbstractUIComponent {
         this.clearSearchIptBtn;
 
         this.init();
+        
     }
 
     get value() {
         return super.value;
     }
+    set value(value) {
 
     set value(value) {
 
@@ -371,8 +373,7 @@ class City {
 async function loadDatas() {
     const response = await fetch("data/datas.json")
         .then(response => response.json())
-        .then(json => worldCities.init(json)
-        );
+        .then(json => worldCities.init(json));
 }
 
 function appInitHandler(evt) {
